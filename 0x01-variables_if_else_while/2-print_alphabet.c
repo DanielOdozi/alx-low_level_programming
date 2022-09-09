@@ -16,5 +16,5 @@ int main(void)
 		alp++;
 	}
 	putchar('\n');
-	return 0;
+	return (0);
 }
