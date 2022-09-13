@@ -9,5 +9,6 @@ int print_last_digit(int as)
 	{
 		add = (add * -1);
 	}
-	_putchar(add);
+	_putchar(add + '0');
+	return (add);
 }
