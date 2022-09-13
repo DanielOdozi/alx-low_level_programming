@@ -2,5 +2,8 @@
 
 int print_last_digit(int as)
 {
-	return (as % 10);
+	int add;
+
+	add = as % 10;
+	_putchar(add);
 }
