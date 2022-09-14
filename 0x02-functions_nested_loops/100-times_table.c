@@ -5,7 +5,7 @@ void print_times_table(int n)
 {
 	int i = 0;
 
-	while (i <= n)
+	while (n <= i)
 	{
 		if (n > 15)
 		{
@@ -15,8 +15,8 @@ void print_times_table(int n)
 		{
 			break;
 		}
-		_putchar(i);
-		i++;
+		_putchar(n);
+		n++;
 	}
 	_putchar('\n');
 }
