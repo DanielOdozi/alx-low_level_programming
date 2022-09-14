@@ -19,5 +19,4 @@ void print_times_table(int n)
 		i++;
 	}
 	_putchar('\n');
-	return (0);
 }
