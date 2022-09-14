@@ -25,17 +25,17 @@ void print_times_table(int n)
 				{
 					_putchar(' ');
 					_putchar(' ');
-					_putchar((((i * j) / 10) % 10) + '0');
-					_putchar(((i * j) % 10) + '0');
+					_putchar((((i * k) / 10) % 10) + '0');
+					_putchar(((i * k) % 10) + '0');
 				}
 				else if ((i * k) < 1000)
 				{
 					_putchar(' ');
-					_putchar((((i * j) / 100) % 10) + '0');
-					_putchar((((i * j) / 10) % 10) + '0');
-					_putchar(((i * j) % 10) + '0');
+					_putchar((((i * k) / 100) % 10) + '0');
+					_putchar((((i * k) / 10) % 10) + '0');
+					_putchar(((i * k) % 10) + '0');
 				}
-			if (j != (n))
+			if (k != (n))
 			{
 				_putchar(',');
 			}
