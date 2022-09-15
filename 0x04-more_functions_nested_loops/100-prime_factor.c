@@ -1,4 +1,3 @@
-#include <math.h>
 #include <stdio.h>
 
 /**
@@ -13,10 +12,12 @@ int main(void)
 
 	for (i = 2; i <= num; i++)
 	{
+
 		if (num % i == 0)
 		{
 			num = num / i;
 		}
+
 	}
 	printf("%ld\n", i);
 	return (0);
