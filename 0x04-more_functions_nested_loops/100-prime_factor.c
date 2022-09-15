@@ -7,10 +7,10 @@
  */
 int main(void)
 {
-	long int i;
 	long int num = 612852475143;
+	long int i;
 
-	for (i = 2; i <= num; i++)
+	for (i = 2; i < num; i++)
 	{
 
 		if (num % i == 0)
