@@ -1,11 +1,10 @@
 #include "main.h"
-#include <string.h>
 
 /**
  * _strcmp - compare
  * @s1 : pointerto char params
  * @s2 : pointer to char params
- * Return: *dest
+ * Return: k
  */
 int _strcmp(char *s1, char *s2)
 {
