@@ -2,7 +2,7 @@
 
 /**
  * _strcmp - compare
- * @s1 : pointerto char params
+ * @s1 : pointer to char params
  * @s2 : pointer to char params
  * Return: k
  */
@@ -17,6 +17,7 @@ int _strcmp(char *s1, char *s2)
 	{
 		i++;
 	}
+
 	k = s1[i] - s2[i];
 	
 	return (k);
