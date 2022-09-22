@@ -2,7 +2,7 @@
 
 /**
  * string_toupper - lower to upper
- * @s: pointer to char params
+ * @k: pointer to char params
  *
  * Return: *ptr
  */
