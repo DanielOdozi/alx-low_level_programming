@@ -11,13 +11,6 @@ char *_strpbrk(char *s, char *accept)
 {
 	char* r = strpbrk(s, accept);
 
-	if (r != 0)
-	{
-		return (r);
-	}
-	else
-	{
-		return (0);
-	}
+	return (r);
 	return ('\0');
 }
