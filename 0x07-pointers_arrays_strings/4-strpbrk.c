@@ -12,5 +12,4 @@ char *_strpbrk(char *s, char *accept)
 	char* r = strpbrk(s, accept);
 
 	return (r);
-	return ('\0');
 }
