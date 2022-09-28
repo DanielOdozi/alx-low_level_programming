@@ -1,4 +1,5 @@
 #include "main.h"
+
 /**
  * factorial - factorial of int
  * @n:int
@@ -16,6 +17,6 @@ int factorial(int n)
 	}
 	else
 	{
-		return (n * factorial (n - 1));
+		return (n * factorial(n - 1));
 	}
 }
