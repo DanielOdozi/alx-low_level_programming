@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdlib.h>
+#include <stdio.h>
 
 /**
  * main - Prints the number of arguments passed into main
@@ -22,6 +22,5 @@ int main(int argc, char* argv[])
 
 		printf("%d\n", i - 1);
 	}
-
 	return (0);
 }
