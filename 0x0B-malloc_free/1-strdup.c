@@ -23,13 +23,13 @@ char *_strdup(char *str)
 	for (i = 0; str[i]; i++)
 		size++;
 
-	t = malloc(sizeof(char) * size);
+	t = malloc(sizeof(char) * (size + 1);
 	
 	if (t == NULL)
 		return (NULL);
 
 	for (i = 0; str[i]; i++)
-		t = strdup(str);
+		t[i] = str[i];
 
 	t[size] = '\0';
 
