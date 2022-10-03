@@ -25,10 +25,10 @@ char *str_concat(char *s1, char *s2)
 		size++;
 
 	s = malloc(sizeof(char) * size);
-	
+
 	if (s == NULL)
 		return (NULL);
-	
+
 	for (i = 0; s1[i]; i++)
 		s[cont++] = s1[i];
 
