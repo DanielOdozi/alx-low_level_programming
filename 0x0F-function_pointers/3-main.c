@@ -28,7 +28,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		printf("Error\n");
 		exit(99);
 	}
-
 	if ((*ptr == '/' && num2 == 0) || (*ptr == '%' && num2 == 0))
 	{
 		printf("Error\n");
