@@ -1,51 +1,51 @@
 #include "variadic_functions.h"
-#include <stdargs.h>
+#include <stdarg.h>
 #include <stdio.h>
+#include <stdlib.h>
 /**
- * print_all - Entry point
- * Desc: Entry
- *@format: value
- * Return: Always 0 (Success)
+ * print_all - prints anything
+ * @format: the format we print in
+ * Return: void
  */
 void print_all(const char * const format, ...)
 {
-	char *k;
-	va_list valist;
-	unsigned int i, j;
+	va_list ptr;
+	char *string;
+	unsigned int i = 0;
+	unsigned int flag;
 
-	i = 0;
-	while (format != NULL)
+	while (format)
 	{
-		va_start(valist, format);
-		while (format[i] != 0)
+		va_start(ptr, format);
+		while (format[i])
 		{
-			j = 1;
+			flag = 1;
 			switch (format[i])
 			{
 				case 'c':
-				printf("%c", va_arg(valist, int));
-				break;
+					printf("%c", va_arg(ptr, int));
+					break;
 				case 'i':
-				printf("%d", va_arg(valist, int));
-				break;
+					printf("%d", va_arg(ptr, int));
+					break;
 				case 'f':
-				printf("%f", va_arg(valist, double));
-				break;
+					printf("%f", va_arg(ptr, double));
+					break;
 				case 's':
-				k = va_arg(valist, char *);
-				if (k == 0)
-				k = "(nil)";
-				printf("%s", k);
-				break;
+					string = va_arg(ptr, char *);
+					if (!string)
+						string = "(nil)";
+					printf("%s", string);
+					break;
 				default:
-				j = 0;
-				break;
+					flag = 0;
+					break;
 			}
-			if (format[i + 1] && j)
+			if (format[i + 1] && flag)
 				printf(", ");
 			i++;
 		}
-		va_end(valist);
+		va_end(ptr);
 		break;
 	}
 	printf("\n");
