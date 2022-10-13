@@ -1,5 +1,7 @@
 #include "variadic_functions.h"
+#include <stdio.h>
 #include <stdarg.h>
+
 /**
  * print_strings - Entry point
  * Desc: Entry
@@ -9,29 +11,27 @@
  */
 void print_strings(const char *separator, const unsigned int n, ...)
 {
-	va_list ap;
+	va_list valist;
 	unsigned int i;
-	char *l;
+	char *j;
 
-	va_start(ap, n);
-
-	for (i = 0; i < n; i++)
+	va_start(valist, n);
+	for (i = 0 ; i < n ; i++)
 	{
-		l = va_arg(ap, char*);
-		if (l == NULL)
+		j = va_arg(valist, char*);
+		if (j  == NULL)
 		{
 			printf("(nil)");
 		}
 		else
 		{
-			printf("%s", l);
+			printf("%s", j);
 		}
-		if (separator != 0 && i < n -1)
+		if (separator != 0 && i < n - 1)
 		{
 			printf("%s", separator);
 		}
 	}
-
-	va_end(ap);
+	va_end(valist);
 	printf("\n");
 }
