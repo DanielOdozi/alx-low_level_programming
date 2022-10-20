@@ -1,21 +1,21 @@
-; ----------------------------------------------------------------------------------------
-; Writes "Hello, Holberton" to the console using only system calls. Runs on 64-bit Linux only.
-; To assemble and run:
-;
-;     nasm -felf64 hello.asm && ld hello.o && ./a.out
-; --------------------------------------------------------------------------------------
+extern printf
 
-	global    _start
+section .text
+global main
 
-	section   .text
-_start:	mov       rax, 1                  ; system call for write
-	mov       rdi, 1                  ; file handle 1 is stdout
-	mov       rsi, message            ; address of string to output
-	mov       rdx, 13                 ; number of bytes
-	syscall                           ; invoke operating system to do the write
-	mov       rax, 60                 ; system call for exit
-	xor       rdi, rdi                ; exit code 0
-	syscall                           ; invoke operating system to exit
+main:
+push rbp
 
-	section   .data
-message:  db        "Hello, Holberton", 10		; note the newline at the end
+mov rdi, fmt
+mov rsi, msg
+mov rax, 0
+call printf
+
+pop rbp
+
+mov rax, 0
+ret
+
+section .data
+msg: db "Hello, Holberton", 0
+fmt: db "%s", 10, 0
