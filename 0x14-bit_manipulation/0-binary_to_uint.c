@@ -7,11 +7,14 @@
 unsigned int binary_to_uint(const char *b)
 {
 	unsigned int decimal = 0, weight = 1, i, k;
+	char str[3];
 
 	if (b == NULL)
 		return (0);
 
 	i = atoi(b);
+	if (i == str)
+		return (0);
 
 	while (i != 0)
 	{
