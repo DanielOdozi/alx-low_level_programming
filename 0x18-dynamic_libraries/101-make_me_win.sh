@@ -1,3 +1,3 @@
 #!/bin/bash
-wget -O /tmp/win.so https://github.com/DanielOdozi/alx-low_level_programming/blob/master/0x18-dynamic_libraries/win.so
-export LD_PRELOAD=/tmp/win.so
+wget -P .. https://raw.githubusercontent.com/VicvekSr9485/alx-low_level_programming/main/0x18-dynamic_libraries/randnum.so
+export LD_PRELOAD="$PWD/../randnum.so"
