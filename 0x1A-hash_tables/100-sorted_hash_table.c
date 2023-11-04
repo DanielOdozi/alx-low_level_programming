@@ -35,34 +35,38 @@ shash_table_t *shash_table_create(unsigned long int size)
 }
 
 /**
- * shash_table_set - Add or update a key-value pair in a sorted hash table.
- * @ht: A pointer to the sorted hash table.
- * @key: The key to be added or updated.
- * @value: The value associated with the key.
+ * shash_table_set - Insert a key-value pair into the sorted hash table
+ * @ht: The sorted hash table
+ * @key: The key to insert
+ * @value: The value to insert
  *
- * Return: 1 on success, 0 on failure.
+ * Return: 1 on success, 0 on failure
  */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
+	unsigned long int index;
+	shash_node_t *new_node, *current;
+
 	if (!ht || !key || !value)
 		return (0);
 
-	unsigned long int index = key_index((unsigned char *)key, ht->size);
-	shash_node_t *current = ht->array[index];
+	index = key_index((unsigned char *)key, ht->size);
 
+	current = ht->array[index];
 	while (current)
 	{
 		if (strcmp(current->key, key) == 0)
 		{
 			free(current->value);
 			current->value = strdup(value);
-			return (current->value ? 1 : 0);
+			if (!current->value)
+				return (0);
+			return (1);
 		}
 		current = current->next;
 	}
 
-	shash_node_t *new_node = malloc(sizeof(shash_node_t));
-
+	new_node = malloc(sizeof(shash_node_t));
 	if (!new_node)
 		return (0);
 
@@ -192,41 +196,41 @@ void shash_table_delete(shash_table_t *ht)
  */
 void insert_sorted(shash_table_t *ht, shash_node_t *node)
 {
-	shash_node_t *current, *prev;
+    shash_node_t *current, *prev;
 
-	if (!ht->shead)
-	{
-		ht->shead = node;
-		ht->stail = node;
-		return;
-	}
+    if (!ht->shead)
+    {
+        ht->shead = node;
+        ht->stail = node;
+        return;
+    }
 
-	current = ht->shead;
-	prev = NULL;
-	while (current)
-	{
-		if (strcmp(current->key, node->key) > 0)
-		{
-			if (!prev)
-			{
-				node->snext = current;
-				current->sprev = node;
-				ht->shead = node;
-			}
-			else
-			{
-				node->snext = current;
-				node->sprev = prev;
-				prev->snext = node;
-				current->sprev = node;
-			}
-			return;
-		}
-		prev = current;
-		current = current->snext;
-	}
+    current = ht->shead;
+    prev = NULL;
+    while (current)
+    {
+        if (strcmp(current->key, node->key) > 0)
+        {
+            if (!prev)
+            {
+                node->snext = current;
+                current->sprev = node;
+                ht->shead = node;
+            }
+            else
+            {
+                node->snext = current;
+                node->sprev = prev;
+                prev->snext = node;
+                current->sprev = node;
+            }
+            return;
+        }
+        prev = current;
+        current = current->snext;
+    }
 
-	prev->snext = node;
-	node->sprev = prev;
-	ht->stail = node;
+    prev->snext = node;
+    node->sprev = prev;
+    ht->stail = node;
 }
