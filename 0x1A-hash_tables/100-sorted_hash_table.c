@@ -35,38 +35,34 @@ shash_table_t *shash_table_create(unsigned long int size)
 }
 
 /**
- * shash_table_set - Insert a key-value pair into the sorted hash table
- * @ht: The sorted hash table
- * @key: The key to insert
- * @value: The value to insert
+ * shash_table_set - Add or update a key-value pair in a sorted hash table.
+ * @ht: A pointer to the sorted hash table.
+ * @key: The key to be added or updated.
+ * @value: The value associated with the key.
  *
- * Return: 1 on success, 0 on failure
+ * Return: 1 on success, 0 on failure.
  */
 int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
-	unsigned long int index;
-	shash_node_t *new_node, *current;
-
 	if (!ht || !key || !value)
 		return (0);
 
-	index = key_index((unsigned char *)key, ht->size);
+	unsigned long int index = key_index((unsigned char *)key, ht->size);
+	shash_node_t *current = ht->array[index];
 
-	current = ht->array[index];
 	while (current)
 	{
 		if (strcmp(current->key, key) == 0)
 		{
 			free(current->value);
 			current->value = strdup(value);
-			if (!current->value)
-				return (0);
-			return (1);
+			return (current->value ? 1 : 0);
 		}
 		current = current->next;
 	}
 
-	new_node = malloc(sizeof(shash_node_t));
+	shash_node_t *new_node = malloc(sizeof(shash_node_t));
+
 	if (!new_node)
 		return (0);
 
