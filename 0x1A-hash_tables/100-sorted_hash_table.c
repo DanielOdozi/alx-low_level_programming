@@ -188,3 +188,49 @@ void shash_table_delete(shash_table_t *ht)
 	free(ht->array);
 	free(ht);
 }
+
+/**
+ * insert_sorted - Insert a node into the sorted linked list
+ * @ht: The sorted hash table
+ * @node: The node to insert
+ */
+void insert_sorted(shash_table_t *ht, shash_node_t *node)
+{
+	shash_node_t *current, *prev;
+
+	if (!ht->shead)
+	{
+		ht->shead = node;
+		ht->stail = node;
+		return;
+	}
+
+	current = ht->shead;
+	prev = NULL;
+	while (current)
+	{
+		if (strcmp(current->key, node->key) > 0)
+		{
+			if (!prev)
+			{
+				node->snext = current;
+				current->sprev = node;
+				ht->shead = node;
+			}
+			else
+			{
+				node->snext = current;
+				node->sprev = prev;
+				prev->snext = node;
+				current->sprev = node;
+			}
+			return;
+		}
+		prev = current;
+		current = current->snext;
+	}
+
+	prev->snext = node;
+	node->sprev = prev;
+	ht->stail = node;
+}
